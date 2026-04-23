@@ -2,9 +2,7 @@
 
 A tiny code‑editing agent in TypeScript (200 LOC) — a minimal, hackable CLI that talks to OpenAI and can read, list, and edit files in your working directory.
 
-This repository is for **educational purposes**, to demonstrate the core elements of a minimal CLI coding agent.
-
-It's adapted from [How to build an agent](https://ampcode.com/notes/how-to-build-an-agent) by Amp.
+This repository is for **educational purposes**, to demonstrate the core elements of a minimal CLI coding agent, adapted from [How to Build an Agent](https://ampcode.com/notes/how-to-build-an-agent) by Amp.
 
 ## Features
 
@@ -14,7 +12,7 @@ It's adapted from [How to build an agent](https://ampcode.com/notes/how-to-build
 - Minimal dependencies and simple code you can tweak
 
 > [!NOTE]
-> No `bash` tool added since this is just for educational purposes, you can easily add it yourself.
+> No `bash` tool is included because it can be risky and this repo is intended for educational use, but you can add it yourself if needed.
 
 ## Requirements
 
@@ -115,4 +113,4 @@ vp build
 
 ## Acknowledgements
 
-Adapted from [How to build an agent](https://ampcode.com/notes/how-to-build-an-agent) by Amp.
+Adapted from [How to Build an Agent](https://ampcode.com/notes/how-to-build-an-agent) by Amp.
