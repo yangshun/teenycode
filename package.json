@@ -1,0 +1,20 @@
+{
+  "name": "teenycode",
+  "version": "1.0.0",
+  "description": "A tiny coding agent in TypeScript (under 200 LOC)",
+  "type": "module",
+  "scripts": {
+    "start": "tsx --env-file-if-exists=.env src/index.ts"
+  },
+  "packageManager": "pnpm@10.28.1",
+  "dependencies": {
+    "openai": "^4.77.0",
+    "zod": "^3.23.8",
+    "zod-to-json-schema": "^3.23.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
