@@ -1,6 +1,6 @@
 {
   "name": "teenycode",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A tiny coding agent in TypeScript (under 200 LOC)",
   "type": "module",
   "scripts": {
@@ -8,15 +8,14 @@
     "prepare": "vp config"
   },
   "dependencies": {
-    "openai": "^4.77.0",
-    "zod": "^3.23.8",
-    "zod-to-json-schema": "^3.23.5"
+    "openai": "^6.34.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@types/node": "^22.10.2",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.2",
-    "vite-plus": "catalog:"
+    "@types/node": "^25.6.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3",
+    "vite-plus": "^0.1.19"
   },
   "packageManager": "pnpm@10.28.1"
 }

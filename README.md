@@ -19,14 +19,17 @@ It's adapted from [How to build an agent](https://ampcode.com/notes/how-to-build
 ## Requirements
 
 - Node.js 22+ (or any modern Node that supports fetch/WHATWG streams)
-- Vite+ (`vp`)
+- One of:
+  - Vite+ (`vp`)
+  - npm
 - An OpenAI API key
 
 ## Setup
 
 ```sh
-vp install
-# uses the pnpm package manager declared in package.json
+# Vite+ users
+vp install # or npm install
+
 cp .env.example .env
 # edit .env and set your API key, e.g.
 # OPENAI_API_KEY=sk-...
@@ -37,20 +40,11 @@ cp .env.example .env
 ## Run
 
 ```sh
-vp run start
+# Vite+
+vp run start # or npm start
 ```
 
 You'll see a prompt like `Chat with <model>`. Type your requests. Quit with `exit`, `quit`, `:q`, or Ctrl‑C.
-
-## Quality checks
-
-```sh
-vp check
-vp lint --fix
-vp fmt
-vp test
-vp build
-```
 
 ## How it works (quick tour)
 
@@ -64,6 +58,7 @@ The agent uses OpenAI Chat Completions with function/tool calling. Tool inputs a
 
 ```sh
 ➜  teenycode git:(main) ✗ vp run start
+# or: npm run start
 
 Chat with gpt-5 (type 'exit' or 'quit' or use Ctrl-C to quit)
 
@@ -104,6 +99,17 @@ Conventions:
 
 - Edits are surgical by design. Keep your work in git and commit often.
 - The agent operates relative to your current working directory.
+
+## Quality checks
+
+```sh
+# Vite+
+vp check
+vp lint --fix
+vp fmt
+vp test
+vp build
+```
 
 ## Acknowledgements
 

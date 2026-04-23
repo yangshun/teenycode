@@ -1,7 +1,6 @@
 import { promises as fs } from "node:fs";
 import * as path from "node:path";
 import { z } from "zod";
-import { zodToJsonSchema } from "zod-to-json-schema";
 
 // A Tool is a capability the agent can invoke. Each tool declares:
 // - a name (used by the model to call it)
@@ -140,15 +139,15 @@ const editFile: Tool = {
 export const tools: Tool[] = [readFile, listFiles, editFile];
 
 // Transform our Tool definitions into the structure the OpenAI client expects
-// for "function tools". We also convert the Zod schema to an OpenAI-compatible
-// JSON Schema using zod-to-json-schema so the model knows the input shape.
+// for "function tools". We also convert the Zod schema to JSON Schema so the
+// model knows the input shape.
 export function toOpenAITools(tools: Tool[]) {
   return tools.map((t) => ({
     type: "function" as const,
     function: {
       name: t.name,
       description: t.description,
-      parameters: zodToJsonSchema(t.schema, { target: "openAi" }) as Record<string, unknown>,
+      parameters: z.toJSONSchema(t.schema) as Record<string, unknown>,
     },
   }));
 }
