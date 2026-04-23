@@ -26,7 +26,7 @@
   ],
   "type": "module",
   "scripts": {
-    "start": "vp node --env-file-if-exists=.env --import tsx src/index.ts",
+    "start": "vp node --import tsx src/index.ts",
     "prepack": "vp build",
     "prepare": "vp config"
   },

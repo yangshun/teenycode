@@ -10,13 +10,16 @@
 // Optional: set OPENAI_MODEL to override the default model.
 
 import { runAgent } from "./agent.js";
+import { loadEnvFromCurrentWorkingDirectory } from "./env.js";
 import { tools } from "./tools.js";
+
+loadEnvFromCurrentWorkingDirectory();
 
 // Ensure the OpenAI API key is available before starting.
 // You can also `export OPENAI_API_KEY=...` in your shell.
 if (!process.env.OPENAI_API_KEY) {
   console.error(
-    "OPENAI_API_KEY is not set.\n\nRun:\n  export OPENAI_API_KEY=sk-...\n  npx teenycode\n\nFor local development, you can also copy .env.example to .env and run `vp run start`.\n",
+    "OPENAI_API_KEY is not set.\n\nRun:\n  export OPENAI_API_KEY=sk-...\n  npx teenycode\n\nOr create a .env file in the current directory.\n",
   );
   process.exit(1);
 }

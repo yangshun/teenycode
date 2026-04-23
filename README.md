@@ -29,6 +29,8 @@ export OPENAI_API_KEY=sk-...
 npx teenycode
 ```
 
+Or put `OPENAI_API_KEY=sk-...` in a `.env` file in the directory where you run `npx teenycode`.
+
 If you prefer a one-liner:
 
 ```sh
