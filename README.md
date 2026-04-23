@@ -2,7 +2,7 @@
 
 A tiny code‑editing agent in TypeScript (200 LOC) — a minimal, hackable CLI that talks to OpenAI and can read, list, and edit files in your working directory.
 
-This repository is for **educational purposes**, to demonstrate the core elements of a minimal CLI coding agent. 
+This repository is for **educational purposes**, to demonstrate the core elements of a minimal CLI coding agent.
 
 It's adapted from [How to build an agent](https://ampcode.com/notes/how-to-build-an-agent) by Amp.
 
@@ -19,13 +19,14 @@ It's adapted from [How to build an agent](https://ampcode.com/notes/how-to-build
 ## Requirements
 
 - Node.js 22+ (or any modern Node that supports fetch/WHATWG streams)
-- pnpm (recommended; repo is configured for pnpm)
+- Vite+ (`vp`)
 - An OpenAI API key
 
 ## Setup
 
 ```sh
-pnpm install # or npm install
+vp install
+# uses the pnpm package manager declared in package.json
 cp .env.example .env
 # edit .env and set your API key, e.g.
 # OPENAI_API_KEY=sk-...
@@ -36,10 +37,20 @@ cp .env.example .env
 ## Run
 
 ```sh
-pnpm start # or npm start
+vp run start
 ```
 
 You'll see a prompt like `Chat with <model>`. Type your requests. Quit with `exit`, `quit`, `:q`, or Ctrl‑C.
+
+## Quality checks
+
+```sh
+vp check
+vp lint --fix
+vp fmt
+vp test
+vp build
+```
 
 ## How it works (quick tour)
 
@@ -52,8 +63,7 @@ The agent uses OpenAI Chat Completions with function/tool calling. Tool inputs a
 ## Example
 
 ```sh
-➜  teenycode git:(main) ✗ pnpm start
-> tsx --env-file-if-exists=.env src/index.ts
+➜  teenycode git:(main) ✗ vp run start
 
 Chat with gpt-5 (type 'exit' or 'quit' or use Ctrl-C to quit)
 

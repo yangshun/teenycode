@@ -6,7 +6,7 @@
 //
 // Quickstart:
 //   1) cp .env.example .env && edit OPENAI_API_KEY
-//   2) pnpm tsx src/index.ts
+//   2) vp run start
 // Optional: set OPENAI_MODEL to override the default model.
 
 import { runAgent } from "./agent.js";

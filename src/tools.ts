@@ -43,7 +43,9 @@ const listFilesInput = z.object({
     .string()
     .nullable()
     .optional()
-    .describe("Optional relative path to list files from. Defaults to the current directory if not provided."),
+    .describe(
+      "Optional relative path to list files from. Defaults to the current directory if not provided.",
+    ),
 });
 
 const listFiles: Tool = {
@@ -126,7 +128,8 @@ const editFile: Tool = {
     // Ensure a unique match so the edit is predictable and reviewable.
     const occurrences = content.split(old_str).length - 1;
     if (occurrences === 0) throw new Error(`old_str not found in ${p}`);
-    if (occurrences > 1) throw new Error(`old_str matched ${occurrences} times in ${p}; must be unique`);
+    if (occurrences > 1)
+      throw new Error(`old_str matched ${occurrences} times in ${p}; must be unique`);
 
     await fs.writeFile(p, content.replace(old_str, new_str));
     return "OK";

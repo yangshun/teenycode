@@ -88,7 +88,9 @@ export async function runAgent(tools: Tool[]): Promise<void> {
         if (call.type !== "function") continue; // defensive: we only support function tools
 
         const tool = toolByName.get(call.function.name);
-        console.log(`${styleText("gray", "Tool")}: ${call.function.name}(${call.function.arguments})\n`);
+        console.log(
+          `${styleText("gray", "Tool")}: ${call.function.name}(${call.function.arguments})\n`,
+        );
 
         let result: string;
         try {
