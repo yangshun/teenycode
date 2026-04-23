@@ -17,9 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/yangshun/teenycode.git"
   },
-  "bin": {
-    "teenycode": "./bin/teenycode.js"
-  },
+  "bin": "bin/teenycode.js",
   "files": [
     "bin",
     "dist",
