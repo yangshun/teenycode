@@ -1,6 +1,6 @@
 {
   "name": "teenycode",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A tiny coding agent in TypeScript (under 200 LOC)",
   "keywords": [
     "agent",
