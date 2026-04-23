@@ -2,9 +2,34 @@
   "name": "teenycode",
   "version": "0.1.0",
   "description": "A tiny coding agent in TypeScript (under 200 LOC)",
+  "keywords": [
+    "agent",
+    "cli",
+    "coding",
+    "openai"
+  ],
+  "homepage": "https://github.com/yangshun/teenycode",
+  "bugs": {
+    "url": "https://github.com/yangshun/teenycode/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yangshun/teenycode.git"
+  },
+  "bin": {
+    "teenycode": "./bin/teenycode.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "type": "module",
   "scripts": {
     "start": "vp node --env-file-if-exists=.env --import tsx src/index.ts",
+    "prepack": "vp build",
     "prepare": "vp config"
   },
   "dependencies": {
@@ -16,6 +41,9 @@
     "tsx": "^4.21.0",
     "typescript": "^6.0.3",
     "vite-plus": "^0.1.19"
+  },
+  "engines": {
+    "node": ">=22"
   },
   "packageManager": "pnpm@10.28.1"
 }

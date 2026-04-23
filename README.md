@@ -18,30 +18,32 @@ It's adapted from [How to build an agent](https://ampcode.com/notes/how-to-build
 
 ## Requirements
 
-- Node.js 22+ (or any modern Node that supports fetch/WHATWG streams)
-- One of:
-  - Vite+ (`vp`)
-  - npm
+- Node.js 22+
+- npm for `npx teenycode`, or Vite+ (`vp`) for local development
 - An OpenAI API key
 
-## Setup
+## Quickstart
 
 ```sh
-# Vite+ users
-vp install # or npm install
-
-cp .env.example .env
-# edit .env and set your API key, e.g.
-# OPENAI_API_KEY=sk-...
-# (optional) override the model (defaults to "gpt-5" in code)
-# OPENAI_MODEL=gpt-4.1-mini
+export OPENAI_API_KEY=sk-...
+npx teenycode
 ```
 
-## Run
+If you prefer a one-liner:
 
 ```sh
-# Vite+
-vp run start # or npm start
+OPENAI_API_KEY=sk-... npx teenycode
+```
+
+If `OPENAI_API_KEY` is missing, the CLI prints setup instructions and exits.
+
+## Local development
+
+```sh
+vp install
+cp .env.example .env
+# edit .env and set your API key
+vp run start
 ```
 
 You'll see a prompt like `Chat with <model>`. Type your requests. Quit with `exit`, `quit`, `:q`, or Ctrl‑C.
@@ -52,13 +54,12 @@ You'll see a prompt like `Chat with <model>`. Type your requests. Quit with `exi
 - `src/agent.ts`: Chat loop, tool routing, and message state
 - `src/tools.ts`: Three built-in tools implemented with Node `fs` APIs
 
-The agent uses OpenAI Chat Completions with function/tool calling. Tool inputs are validated with Zod, and schemas are exported to OpenAI via `zod-to-json-schema`.
+The agent uses OpenAI Chat Completions with function/tool calling. Tool inputs are validated with Zod, and schemas are exported to JSON Schema for the model.
 
 ## Example
 
 ```sh
-➜  teenycode git:(main) ✗ vp run start
-# or: npm run start
+➜  teenycode git:(main) ✗ OPENAI_API_KEY=sk-... npx teenycode
 
 Chat with gpt-5 (type 'exit' or 'quit' or use Ctrl-C to quit)
 
@@ -103,7 +104,6 @@ Conventions:
 ## Quality checks
 
 ```sh
-# Vite+
 vp check
 vp lint --fix
 vp fmt

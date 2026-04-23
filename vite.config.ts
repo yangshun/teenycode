@@ -1,7 +1,7 @@
 import { builtinModules } from "node:module";
 import { defineConfig } from "vite-plus";
 
-const externalPackages = ["openai", "zod", "zod-to-json-schema"];
+const externalPackages = ["openai", "zod"];
 const builtinModuleIds = new Set(builtinModules.flatMap((id) => [id, `node:${id}`]));
 
 function isExternal(id: string) {
