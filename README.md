@@ -1,4 +1,4 @@
-# TeenyCode
+# teenycode
 
 A tiny code‑editing agent in TypeScript (200 LOC) — a minimal, hackable CLI that talks to OpenAI and can read, list, and edit files in your working directory.
 
