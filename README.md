@@ -18,10 +18,12 @@ This repository is for **educational purposes**, to demonstrate the core element
 ## Requirements
 
 - Node.js 22+
-- npm for `npx teenycode`, or Vite+ (`vp`) for local development
+- npm / Vite Plus
 - An OpenAI API key
 
 ## Quickstart
+
+Try it immediately, without cloning the repo (you will need your own OpenAI API key):
 
 ```sh
 export OPENAI_API_KEY=sk-...
@@ -36,20 +38,19 @@ If you prefer a one-liner:
 OPENAI_API_KEY=sk-... npx teenycode
 ```
 
-If `OPENAI_API_KEY` is missing, the CLI prints setup instructions and exits.
-
-## Local development
+Alternatively, run it from source by cloning the repo:
 
 ```sh
-vp install
-cp .env.example .env
-# edit .env and set your API key
-vp run start
+npm install
+cp .env.example .env # Then edit .env and set OPENAI_API_KEY
+npm start
 ```
 
 You'll see a prompt like `Chat with <model>`. Type your requests. Quit with `exit`, `quit`, `:q`, or Ctrl‑C.
 
-## How it works (quick tour)
+If `OPENAI_API_KEY` is missing, the CLI prints setup instructions and exits.
+
+## How it works
 
 - `src/index.ts`: Entry point; checks `OPENAI_API_KEY`, starts the agent
 - `src/agent.ts`: Chat loop, tool routing, and message state
@@ -59,24 +60,19 @@ The agent uses OpenAI Chat Completions with function/tool calling. Tool inputs a
 
 ## Example
 
-```sh
+```
 ➜  teenycode git:(main) ✗ OPENAI_API_KEY=sk-... npx teenycode
 
 Chat with gpt-5 (type 'exit' or 'quit' or use Ctrl-C to quit)
 
 You: What is this repo about?
 
-tool: list_files({"path": ""})
-
-tool: read_file({"path":"README.md"})
-
-tool: read_file({"path":"package.json"})
-
-tool: read_file({"path":"src/index.ts"})
-
-tool: read_file({"path":"src/agent.ts"})
-
-tool: read_file({"path":"src/tools.ts"})
+Tool: list_files({"path": ""})
+Tool: read_file({"path":"README.md"})
+Tool: read_file({"path":"package.json"})
+Tool: read_file({"path":"src/index.ts"})
+Tool: read_file({"path":"src/agent.ts"})
+Tool: read_file({"path":"src/tools.ts"})
 
 Agent: TeenyCode is a tiny, hackable CLI coding agent written in TypeScript (~200 LOC) for educational purposes. It chats with OpenAI and can operate on your local files via three tools:
 - read_file: read a file’s contents
@@ -101,6 +97,15 @@ Conventions:
 
 - Edits are surgical by design. Keep your work in git and commit often.
 - The agent operates relative to your current working directory.
+
+## Local development
+
+```sh
+vp install
+cp .env.example .env
+# edit .env and set your API key
+vp run start
+```
 
 ## Quality checks
 
