@@ -53,10 +53,10 @@ const listFiles: Tool = {
     "List files and directories at a given path. If no path is provided, lists files in the current directory.",
   schema: listFilesInput,
   execute: async (input) => {
-    const { path: p } = listFilesInput.parse(input);
+    const { path: pathParam } = listFilesInput.parse(input);
 
     // Default to current directory when path is not provided or is null.
-    const root = p && p !== null ? p : ".";
+    const root = pathParam && pathParam !== null ? pathParam : ".";
 
     // Node 20+ supports 'recursive' + 'withFileTypes' to walk a tree.
     const entries = await fs.readdir(root, { recursive: true, withFileTypes: true });
@@ -67,6 +67,7 @@ const listFiles: Tool = {
       const rel = path.relative(root, path.join(e.parentPath ?? root, e.name));
       out.push(e.isDirectory() ? `${rel}/` : rel);
     }
+
     return JSON.stringify(out);
   },
 };
@@ -113,8 +114,9 @@ const editFile: Tool = {
         // Create parent directories as needed, then write new content.
         await fs.mkdir(path.dirname(p), { recursive: true });
         await fs.writeFile(p, new_str);
-        return "OK";
+        return `Created ${p}`;
       }
+
       // Propagate any other error (e.g., permissions).
       throw err;
     }
@@ -135,7 +137,7 @@ const editFile: Tool = {
     }
 
     await fs.writeFile(p, content.replace(old_str, new_str));
-    return "OK";
+    return `Edited ${p}`;
   },
 };
 
@@ -146,12 +148,12 @@ export const tools: Tool[] = [readFile, listFiles, editFile];
 // for "function tools". We also convert the Zod schema to JSON Schema so the
 // model knows the input shape.
 export function toOpenAITools(tools: Tool[]) {
-  return tools.map((t) => ({
+  return tools.map((tool) => ({
     type: "function" as const,
     function: {
-      name: t.name,
-      description: t.description,
-      parameters: z.toJSONSchema(t.schema) as Record<string, unknown>,
+      name: tool.name,
+      description: tool.description,
+      parameters: z.toJSONSchema(tool.schema) as Record<string, unknown>,
     },
   }));
 }

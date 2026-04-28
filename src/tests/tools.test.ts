@@ -33,12 +33,12 @@ describe("tools", () => {
 
     await expect(
       editFile.execute({ path: "note.txt", old_str: "", new_str: "hello" }),
-    ).resolves.toBe("OK");
+    ).resolves.toBe("Created note.txt");
     await expect(readFile("note.txt", "utf8")).resolves.toBe("hello");
 
     await expect(
       editFile.execute({ path: "note.txt", old_str: "hello", new_str: "hello world" }),
-    ).resolves.toBe("OK");
+    ).resolves.toBe("Edited note.txt");
     await expect(readFile("note.txt", "utf8")).resolves.toBe("hello world");
   });
 

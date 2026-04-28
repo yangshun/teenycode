@@ -85,7 +85,9 @@ export async function runAgent(tools: Tool[]): Promise<void> {
 
       // Otherwise, execute each requested tool in sequence and send results back.
       for (const call of msg.tool_calls) {
-        if (call.type !== "function") continue; // defensive: we only support function tools
+        if (call.type !== "function") {
+          continue; // defensive: we only support function tools
+        }
 
         const tool = toolByName.get(call.function.name);
         console.log(
@@ -94,7 +96,9 @@ export async function runAgent(tools: Tool[]): Promise<void> {
 
         let result: string;
         try {
-          if (!tool) throw new Error(`Unknown tool: ${call.function.name}`);
+          if (!tool) {
+            throw new Error(`Unknown tool: ${call.function.name}`);
+          }
 
           // Tool arguments are a JSON string — parse and validate in the tool.
           const args = JSON.parse(call.function.arguments);
