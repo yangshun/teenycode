@@ -12,7 +12,8 @@ This repository is for **educational purposes**, to demonstrate the core element
 - Minimal dependencies and simple code you can tweak
 
 > [!NOTE]
-> No `bash` tool is included because it can be risky and this repo is intended for educational use, but you can add it yourself if needed.
+> No `bash` tool is included because it can be risky and this repo is intended for educational use.
+> You can add it yourself if needed.
 
 ## Requirements
 

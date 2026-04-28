@@ -2,7 +2,7 @@ import { mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vite-plus/test";
-import { tools, toOpenAITools } from "./tools.js";
+import { tools, toOpenAITools } from "../tools.js";
 
 function getTool(name: string) {
   const tool = tools.find((candidate) => candidate.name === name);

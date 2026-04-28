@@ -2,7 +2,7 @@ import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vite-plus/test";
-import { loadEnvFromCurrentWorkingDirectory } from "./env.js";
+import { loadEnvFromCurrentWorkingDirectory } from "../env.js";
 
 describe("loadEnvFromCurrentWorkingDirectory", () => {
   const originalCwd = process.cwd();
